@@ -1,9 +1,8 @@
 # Title
+Is there more to reviews than just the product?
 
 # Abstract
-A 150 word description of the project idea, goals, dataset used. What story you would like to tell and why? What's the motivation behind your project?
-
-Online product reviews are a major factor when purchasing products. Frequently, before purchasing an item, we assess the quality by looking at the star rating and reviews. But how much are the ratings influenced by product price, time of year, and sales rank? Different cognitive biases may influence raters to rate or speak more highly of certain products over others. For example, we often ascribe more positive attributes to purchases we’ve made and this is known as post-purchase rationalization. In addition, seasons of the year can affect our mood and this may in turn affect our review of products. Could we find a relationship between purchase price and the reviewer rating? Or does the season of the year affect how harshly we rate items? In order to understand more about how these factors influence reviewer ratings we can use the Amazon dataset which provides us with product reviews and information on product price, time when review was written, and the sales rank of the product. 
+Online product reviews are a major factor when purchasing products. Frequently, before purchasing an item, we assess the quality by looking at the star rating and reviews. But how much are the ratings influenced by factors other than the product itself? Different cognitive biases may influence raters to rate or speak more highly of certain products over others. For example, we often ascribe more positive attributes to purchases we’ve made and this is known as post-purchase rationalization. In this project we want to analyze the Amazon review dataset in order to discover whether factors such as price, position in the sales ranking and time of the year in which a review is written can impact how customers perceive a product. We want to use this data to gain an insight on how these factors can play a role in the success of a product.
 
 # Research questions
 A list of research questions you would like to address during the project. 
@@ -42,16 +41,14 @@ df.reviewText[0]
 df.overall[0]
 ```
 
-List the dataset(s) you want to use, and some ideas on how do you expect to get, manage, process and enrich it/them. Show us you've read the docs and some examples, and you've a clear idea on what to expect. Discuss data size and format if relevant.
-
 # A list of internal milestones up until project milestone 2
-
 We plan our progress in weeks:
-1. Get access to the dataset and clusters. Import the dataset into memory. Get familiar with the dataset.
-2. Start to work with the dataset. Clean up the dataset (remove duplicates, fill in missing values, extract information of interest. Visualize the data, get an idea of its distribution and other interesting properties.
-3. Study correlations between factors extracted from the dataset, get an idea of whether the correlations that we're trying to prove the existence of actually exist or if we need to adjust the scope of our project.
-4. Document progress and plan for the next step.
-
+1. Get access to the dataset and clusters. Import the dataset into memory. Get some initial statistical description of the data (average review score per price tier, average review score per category, average number of reviews per month...).
+2. Perform data cleaning and wrangling (remove duplicates, fill in missing values...).
+3. Study the data, get an idea of whether the correlations that we're trying to prove the existence of actually exist or if we need to adjust the scope of our project.
+4. Document progress and plan for the next step. Write an outline of the data story that we will tell.
 
 # Questions for TAa
-Add here some questions you have for us, in general or project-specific.
+Will there be limits on how often we're allowed to use the compute cluster?
+Can we get temporal data on price and sales ranking of products?
+Are we going in the right direction with this proposal? Do you think there are any other research topics we should consider?
