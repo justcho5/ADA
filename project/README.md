@@ -2,7 +2,7 @@
 Is there more to reviews than just the product?
 
 # Abstract
-Online product reviews are a major factor when purchasing products. Frequently, before purchasing an item, we assess the quality by looking at the star rating and reviews. But how much are the ratings influenced by factors other than the product itself? Different cognitive biases may influence raters to rate or speak more highly of certain products over others. For example, we often ascribe more positive attributes to purchases we’ve made and this is known as post-purchase rationalization. In this project we want to analyze the Amazon review dataset in order to discover whether factors such as price, position in the sales ranking and time of the year in which a review is written can impact how customers perceive a product. We want to use this data to gain an insight on how these factors can play a role in the success of a product.
+Online product reviews are a major factor when purchasing products. Frequently, before purchasing an item, we assess the quality by looking at the star rating and reviews. But how much are the ratings influenced by factors other than the product itself? Different cognitive biases may influence raters to rate or speak more highly of certain products over others. For example, we often ascribe more positive attributes to purchases we’ve made and this is known as post-purchase rationalization. In this project we want to analyze the Amazon review dataset in order to discover whether factors such as price, position in the sales ranking and time of the year in which a review is written can impact how customers perceive a product. We want to use this data to gain an insight on how these factors can play a role in user reviews.
 
 # Research questions
 A list of research questions you would like to address during the project. 
@@ -51,4 +51,4 @@ We plan our progress in weeks:
 # Questions for TAa
 Will there be limits on how often we're allowed to use the compute cluster?
 Can we get temporal data on price and sales ranking of products?
-Are we going in the right direction with this proposal? Do you think there are any other research topics we should consider?
+Are we going in the right direction with this proposal? Do you think there are any other research subtopics we should consider?
