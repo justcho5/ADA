@@ -5,11 +5,13 @@ Is there more to reviews than just the product?
 Online product reviews are a major factor when purchasing products. Frequently, before purchasing an item, we assess the quality by looking at the star rating and reviews. But how much are the ratings influenced by factors other than the product itself? Different cognitive biases may influence raters to rate or speak more highly of certain products over others. For example, we often ascribe more positive attributes to purchases we’ve made and this is known as post-purchase rationalization. In this project we want to analyze the Amazon review dataset in order to discover whether factors such as price, position in the sales ranking and time of the year in which a review is written can impact how customers perceive a product. We want to use this data to gain an insight on how these factors can play a role in user reviews.
 
 # Research questions
-A list of research questions you would like to address during the project. 
 1. Can we observe a periodic pattern in average user rating?
-	a. For example: does ice cream get better reviews in summer? Is cold medicine reviewed more highly in winter?
+    * Does ice cream get better reviews in summer?
+    * Is cold medicine reviewed more highly in winter?
+
 2. Can we calculate a sentiment score based on the review text and is sentiment score related to user ratings?
-	a. Is a negative sentiment correlated to a lower user rating?
+    * Is a negative sentiment correlated to a lower user rating?
+
 3. Are more expensive items rated higher? Is there choice supportive bias?
 
 # Dataset
