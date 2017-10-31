@@ -45,7 +45,13 @@ df.overall[0]
 List the dataset(s) you want to use, and some ideas on how do you expect to get, manage, process and enrich it/them. Show us you've read the docs and some examples, and you've a clear idea on what to expect. Discuss data size and format if relevant.
 
 # A list of internal milestones up until project milestone 2
-Add here a sketch of your planning for the next project milestone.
+
+We plan our progress in weeks:
+1. Get access to the dataset and clusters. Import the dataset into memory. Get familiar with the dataset.
+2. Start to work with the dataset. Clean up the dataset (remove duplicates, fill in missing values, extract information of interest. Visualize the data, get an idea of its distribution and other interesting properties.
+3. Study correlations between factors extracted from the dataset, get an idea of whether the correlations that we're trying to prove the existence of actually exist or if we need to adjust the scope of our project.
+4. Document progress and plan for the next step.
+
 
 # Questions for TAa
 Add here some questions you have for us, in general or project-specific.
