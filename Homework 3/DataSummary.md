@@ -1,3 +1,5 @@
+# Task 1
+
 Codes:
 * ei_lmhr_m
 * ei_lmhu_m
@@ -108,3 +110,14 @@ Codes:
     * "Unemployment rate by education level, male, ISCED 2 (%)"
     * "Unemployment rate by education level, male, ISCED 3-4 (%)"
     * "Unemployment rate by education level, male, ISCED 5-6 (%)"
+
+# Task 2
+
+2_1 Taux de chômage.xlsx
+* Time: 2017.01-09
+* Data: unemployment rate, registered unemployment, job seeker, job seeker with job
+
+Note: registered unemployment = job seeker - job seeker with job
+
+
+
