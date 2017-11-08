@@ -1,0 +1,240 @@
+{
+  "axes": [
+    {
+      "scale": "x",
+      "title": "Year",
+      "type": "x"
+    },
+    {
+      "scale": "y",
+      "title": "Unemployment Rate (%)",
+      "type": "y"
+    }
+  ],
+  "data": [
+    {
+      "name": "table",
+      "values": [
+        {
+          "col": "Males",
+          "idx": "2006",
+          "val": 7.3
+        },
+        {
+          "col": "Females",
+          "idx": "2006",
+          "val": 6.7
+        },
+        {
+          "col": "Males",
+          "idx": "2007",
+          "val": 6.5
+        },
+        {
+          "col": "Females",
+          "idx": "2007",
+          "val": 5.6
+        },
+        {
+          "col": "Males",
+          "idx": "2008",
+          "val": 8.4
+        },
+        {
+          "col": "Females",
+          "idx": "2008",
+          "val": 7.1
+        },
+        {
+          "col": "Males",
+          "idx": "2009",
+          "val": 20.9
+        },
+        {
+          "col": "Females",
+          "idx": "2009",
+          "val": 14.1
+        },
+        {
+          "col": "Males",
+          "idx": "2010",
+          "val": 22.7
+        },
+        {
+          "col": "Females",
+          "idx": "2010",
+          "val": 16.3
+        },
+        {
+          "col": "Males",
+          "idx": "2011",
+          "val": 18.6
+        },
+        {
+          "col": "Females",
+          "idx": "2011",
+          "val": 13.8
+        },
+        {
+          "col": "Males",
+          "idx": "2012",
+          "val": 16.2
+        },
+        {
+          "col": "Females",
+          "idx": "2012",
+          "val": 14.0
+        },
+        {
+          "col": "Males",
+          "idx": "2013",
+          "val": 12.6
+        },
+        {
+          "col": "Females",
+          "idx": "2013",
+          "val": 11.1
+        },
+        {
+          "col": "Males",
+          "idx": "2014",
+          "val": 11.8
+        },
+        {
+          "col": "Females",
+          "idx": "2014",
+          "val": 9.8
+        },
+        {
+          "col": "Males",
+          "idx": "2015",
+          "val": 11.1
+        },
+        {
+          "col": "Females",
+          "idx": "2015",
+          "val": 8.6
+        },
+        {
+          "col": "Males",
+          "idx": "2016",
+          "val": 10.9
+        },
+        {
+          "col": "Females",
+          "idx": "2016",
+          "val": 8.4
+        }
+      ]
+    }
+  ],
+  "height": 250,
+  "legends": [
+    {
+      "fill": "color",
+      "offset": 0,
+      "properties": {},
+      "title": "Latvia"
+    }
+  ],
+  "marks": [
+    {
+      "from": {
+        "data": "table",
+        "transform": [
+          {
+            "keys": [
+              "data.idx"
+            ],
+            "type": "facet"
+          }
+        ]
+      },
+      "marks": [
+        {
+          "properties": {
+            "enter": {
+              "fill": {
+                "field": "data.col",
+                "scale": "color"
+              },
+              "width": {
+                "band": true,
+                "offset": -1,
+                "scale": "pos"
+              },
+              "x": {
+                "field": "data.col",
+                "scale": "pos"
+              },
+              "y": {
+                "field": "data.val",
+                "scale": "y"
+              },
+              "y2": {
+                "scale": "y",
+                "value": 0
+              }
+            }
+          },
+          "type": "rect"
+        }
+      ],
+      "properties": {
+        "enter": {
+          "width": {
+            "band": true,
+            "scale": "x"
+          },
+          "x": {
+            "field": "key",
+            "scale": "x"
+          }
+        }
+      },
+      "scales": [
+        {
+          "domain": {
+            "field": "data.col"
+          },
+          "name": "pos",
+          "range": "width",
+          "type": "ordinal"
+        }
+      ],
+      "type": "group"
+    }
+  ],
+  "padding": "auto",
+  "scales": [
+    {
+      "domain": {
+        "data": "table",
+        "field": "data.idx"
+      },
+      "name": "x",
+      "padding": 0.2,
+      "range": "width",
+      "type": "ordinal"
+    },
+    {
+      "domain": {
+        "data": "table",
+        "field": "data.val"
+      },
+      "name": "y",
+      "nice": true,
+      "range": "height"
+    },
+    {
+      "domain": {
+        "data": "table",
+        "field": "data.col"
+      },
+      "name": "color",
+      "range": "category20",
+      "type": "ordinal"
+    }
+  ],
+  "width": 400
+}

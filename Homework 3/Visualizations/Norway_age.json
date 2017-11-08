@@ -1,0 +1,470 @@
+{
+  "axes": [
+    {
+      "scale": "x",
+      "title": "Year",
+      "type": "x"
+    },
+    {
+      "scale": "y",
+      "title": "Unemployment Rate (%)",
+      "type": "y"
+    }
+  ],
+  "data": [
+    {
+      "name": "table",
+      "values": [
+        {
+          "col": "From 15 to 29 years",
+          "idx": 2006,
+          "val": 6.55
+        },
+        {
+          "col": "From 30 to 39 years",
+          "idx": 2006,
+          "val": 3.4000000000000004
+        },
+        {
+          "col": "From 40 to 49 years",
+          "idx": 2006,
+          "val": 2.3499999999999996
+        },
+        {
+          "col": "From 50 to 59 years",
+          "idx": 2006,
+          "val": 1.35
+        },
+        {
+          "col": "From 60 to 69 years",
+          "idx": 2006,
+          "val": 1.2
+        },
+        {
+          "col": "From 70 to 79 years",
+          "idx": 2006,
+          "val": NaN
+        },
+        {
+          "col": "From 15 to 29 years",
+          "idx": 2007,
+          "val": 5.2
+        },
+        {
+          "col": "From 30 to 39 years",
+          "idx": 2007,
+          "val": 1.9500000000000002
+        },
+        {
+          "col": "From 40 to 49 years",
+          "idx": 2007,
+          "val": 1.7
+        },
+        {
+          "col": "From 50 to 59 years",
+          "idx": 2007,
+          "val": 1.0
+        },
+        {
+          "col": "From 60 to 69 years",
+          "idx": 2007,
+          "val": 1.1
+        },
+        {
+          "col": "From 70 to 79 years",
+          "idx": 2007,
+          "val": NaN
+        },
+        {
+          "col": "From 15 to 29 years",
+          "idx": 2008,
+          "val": 5.5
+        },
+        {
+          "col": "From 30 to 39 years",
+          "idx": 2008,
+          "val": 1.95
+        },
+        {
+          "col": "From 40 to 49 years",
+          "idx": 2008,
+          "val": 1.4
+        },
+        {
+          "col": "From 50 to 59 years",
+          "idx": 2008,
+          "val": 1.3
+        },
+        {
+          "col": "From 60 to 69 years",
+          "idx": 2008,
+          "val": 0.9
+        },
+        {
+          "col": "From 70 to 79 years",
+          "idx": 2008,
+          "val": NaN
+        },
+        {
+          "col": "From 15 to 29 years",
+          "idx": 2009,
+          "val": 6.3999999999999995
+        },
+        {
+          "col": "From 30 to 39 years",
+          "idx": 2009,
+          "val": 2.7
+        },
+        {
+          "col": "From 40 to 49 years",
+          "idx": 2009,
+          "val": 2.1
+        },
+        {
+          "col": "From 50 to 59 years",
+          "idx": 2009,
+          "val": 1.25
+        },
+        {
+          "col": "From 60 to 69 years",
+          "idx": 2009,
+          "val": 0.9
+        },
+        {
+          "col": "From 70 to 79 years",
+          "idx": 2009,
+          "val": NaN
+        },
+        {
+          "col": "From 15 to 29 years",
+          "idx": 2010,
+          "val": 7.300000000000001
+        },
+        {
+          "col": "From 30 to 39 years",
+          "idx": 2010,
+          "val": 3.35
+        },
+        {
+          "col": "From 40 to 49 years",
+          "idx": 2010,
+          "val": 2.1
+        },
+        {
+          "col": "From 50 to 59 years",
+          "idx": 2010,
+          "val": 1.7
+        },
+        {
+          "col": "From 60 to 69 years",
+          "idx": 2010,
+          "val": 1.2
+        },
+        {
+          "col": "From 70 to 79 years",
+          "idx": 2010,
+          "val": NaN
+        },
+        {
+          "col": "From 15 to 29 years",
+          "idx": 2011,
+          "val": 6.8
+        },
+        {
+          "col": "From 30 to 39 years",
+          "idx": 2011,
+          "val": 2.9
+        },
+        {
+          "col": "From 40 to 49 years",
+          "idx": 2011,
+          "val": 1.9500000000000002
+        },
+        {
+          "col": "From 50 to 59 years",
+          "idx": 2011,
+          "val": 1.6
+        },
+        {
+          "col": "From 60 to 69 years",
+          "idx": 2011,
+          "val": 1.1
+        },
+        {
+          "col": "From 70 to 79 years",
+          "idx": 2011,
+          "val": NaN
+        },
+        {
+          "col": "From 15 to 29 years",
+          "idx": 2012,
+          "val": 6.4
+        },
+        {
+          "col": "From 30 to 39 years",
+          "idx": 2012,
+          "val": 2.75
+        },
+        {
+          "col": "From 40 to 49 years",
+          "idx": 2012,
+          "val": 2.0
+        },
+        {
+          "col": "From 50 to 59 years",
+          "idx": 2012,
+          "val": 1.65
+        },
+        {
+          "col": "From 60 to 69 years",
+          "idx": 2012,
+          "val": 0.8
+        },
+        {
+          "col": "From 70 to 79 years",
+          "idx": 2012,
+          "val": NaN
+        },
+        {
+          "col": "From 15 to 29 years",
+          "idx": 2013,
+          "val": 7.199999999999999
+        },
+        {
+          "col": "From 30 to 39 years",
+          "idx": 2013,
+          "val": 3.05
+        },
+        {
+          "col": "From 40 to 49 years",
+          "idx": 2013,
+          "val": 2.1500000000000004
+        },
+        {
+          "col": "From 50 to 59 years",
+          "idx": 2013,
+          "val": 1.65
+        },
+        {
+          "col": "From 60 to 69 years",
+          "idx": 2013,
+          "val": 0.8500000000000001
+        },
+        {
+          "col": "From 70 to 79 years",
+          "idx": 2013,
+          "val": NaN
+        },
+        {
+          "col": "From 15 to 29 years",
+          "idx": 2014,
+          "val": 6.800000000000001
+        },
+        {
+          "col": "From 30 to 39 years",
+          "idx": 2014,
+          "val": 3.55
+        },
+        {
+          "col": "From 40 to 49 years",
+          "idx": 2014,
+          "val": 2.35
+        },
+        {
+          "col": "From 50 to 59 years",
+          "idx": 2014,
+          "val": 2.05
+        },
+        {
+          "col": "From 60 to 69 years",
+          "idx": 2014,
+          "val": 0.8500000000000001
+        },
+        {
+          "col": "From 70 to 79 years",
+          "idx": 2014,
+          "val": NaN
+        },
+        {
+          "col": "From 15 to 29 years",
+          "idx": 2015,
+          "val": 8.0
+        },
+        {
+          "col": "From 30 to 39 years",
+          "idx": 2015,
+          "val": 5.0
+        },
+        {
+          "col": "From 40 to 49 years",
+          "idx": 2015,
+          "val": 2.75
+        },
+        {
+          "col": "From 50 to 59 years",
+          "idx": 2015,
+          "val": 2.25
+        },
+        {
+          "col": "From 60 to 69 years",
+          "idx": 2015,
+          "val": 1.2000000000000002
+        },
+        {
+          "col": "From 70 to 79 years",
+          "idx": 2015,
+          "val": NaN
+        },
+        {
+          "col": "From 15 to 29 years",
+          "idx": 2016,
+          "val": 8.899999999999999
+        },
+        {
+          "col": "From 30 to 39 years",
+          "idx": 2016,
+          "val": 5.35
+        },
+        {
+          "col": "From 40 to 49 years",
+          "idx": 2016,
+          "val": 3.1
+        },
+        {
+          "col": "From 50 to 59 years",
+          "idx": 2016,
+          "val": 2.25
+        },
+        {
+          "col": "From 60 to 69 years",
+          "idx": 2016,
+          "val": 1.35
+        },
+        {
+          "col": "From 70 to 79 years",
+          "idx": 2016,
+          "val": NaN
+        }
+      ]
+    }
+  ],
+  "height": 300,
+  "legends": [
+    {
+      "fill": "color",
+      "offset": 0,
+      "properties": {},
+      "title": "Norway"
+    }
+  ],
+  "marks": [
+    {
+      "from": {
+        "data": "table",
+        "transform": [
+          {
+            "keys": [
+              "data.idx"
+            ],
+            "type": "facet"
+          }
+        ]
+      },
+      "marks": [
+        {
+          "properties": {
+            "enter": {
+              "fill": {
+                "field": "data.col",
+                "scale": "color"
+              },
+              "width": {
+                "band": true,
+                "offset": -1,
+                "scale": "pos"
+              },
+              "x": {
+                "field": "data.col",
+                "scale": "pos"
+              },
+              "y": {
+                "field": "data.val",
+                "scale": "y"
+              },
+              "y2": {
+                "scale": "y",
+                "value": 0
+              }
+            }
+          },
+          "type": "rect"
+        }
+      ],
+      "properties": {
+        "enter": {
+          "width": {
+            "band": true,
+            "scale": "x"
+          },
+          "x": {
+            "field": "key",
+            "scale": "x"
+          }
+        }
+      },
+      "scales": [
+        {
+          "domain": {
+            "field": "data.col"
+          },
+          "name": "pos",
+          "range": "width",
+          "type": "ordinal"
+        }
+      ],
+      "type": "group"
+    }
+  ],
+  "padding": "auto",
+  "scales": [
+    {
+      "domain": {
+        "data": "table",
+        "field": "data.idx"
+      },
+      "name": "x",
+      "padding": 0.2,
+      "range": "width",
+      "type": "ordinal"
+    },
+    {
+      "domain": {
+        "data": "table",
+        "field": "data.val"
+      },
+      "name": "y",
+      "nice": true,
+      "range": "height"
+    },
+    {
+      "domain": {
+        "data": "table",
+        "field": "data.col"
+      },
+      "name": "color",
+      "range": [
+        "#e41a1c",
+        "#377eb8",
+        "#4daf4a",
+        "#984ea3",
+        "#ff7f00",
+        "#ffff33",
+        "#a65628",
+        "#f781bf",
+        "#999999"
+      ],
+      "type": "ordinal"
+    }
+  ],
+  "width": 350
+}
