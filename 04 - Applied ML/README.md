@@ -48,7 +48,7 @@ As above, you may use the techniques we discussed in class for summarizing and c
 What do you observe?
 Describe what your observations mean for the conclusions drawn by the naive "researcher" from his superficial analysis.
 
-#### 3. A propsensity score model
+#### 3. A propensity score model
 
 Use logistic regression to estimate propensity scores for all points in the dataset.
 You may use `sklearn` to fit the logistic regression model and apply it to each data point to obtain propensity scores:
