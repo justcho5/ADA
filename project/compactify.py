@@ -8,8 +8,15 @@ sc = SparkContext()
 sqlContext = SQLContext(sc)
 
 # read the input file line by line
-sampled_text.saveAsTextFile('hdfs:///user/cyu/sample0.01.json')
-text_file = sc.textFile('hdfs:///datasets/productGraph/complete.json')
+#sampled_text.saveAsTextFile('hdfs:///user/cyu/sample0.01.json')
+text_file = sc.textFile('hdfs:///user/cyu/sample_cl_0.01.json/part-0000')
+#text_file = sc.textFile('hdfs:///datasets/productGraph/complete.json')
+
+
+reviews = text_file.map(lambda line: json.loads(line)) \
+    .reduce(lambda a, b: a + b)
+
+	
 
 # convert a text line to words vector
 def get_line_words(line):
