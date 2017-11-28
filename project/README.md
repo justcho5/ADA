@@ -15,7 +15,7 @@ Online product reviews are a major factor when purchasing products. Frequently, 
 3. Are more expensive items rated higher? Is there choice supportive bias?
 
 # Dataset
-We are going to use the Amazon reviews dataset. Since this dataset is fairly large we expect that we will have to use the compute cluster to deal with it unless we decide to use a stripped down version. Each line in the data files is a JSON object and the files can be imported line by line using a for loop in Python. The dataset's page has some Python code examples that explain how to extract the data out of the raw files and import it into a Pandas DataFrame so we can use that to get started. Since the metadata about the product being reviewed (category ranking, price...) are in a separate dataset we will need to use Pandas' join functionality to combine them. We are going to use the overall score, the product's price, the product's category ranking, the review's text and its time in our project.
+We are going to use the Amazon reviews dataset. This dataset is large (about 100 GB for the reviews file and 20 GB for the metadata file when uncompressed) and needs to be processed using the cluster. Each line in the data files is a JSON object and the files can be imported line by line using a for loop in Python. The dataset's page has some Python code examples that explain how to extract the data out of the raw files and import it into a Pandas DataFrame so we can use that to get started. Since the metadata about the product being reviewed (category ranking, price...) are in a separate dataset we will need to use Pandas' join functionality to combine them. We are going to use the overall score, the product's price, the product's category ranking, the review's text and its time in our project.
 Example of accessing the data:
 ```python
 import json
@@ -49,6 +49,14 @@ We plan our progress in weeks:
 2. Perform data cleaning and wrangling (remove duplicates, fill in missing values...).
 3. Study the data, get an idea of whether the correlations that we're trying to prove the existence of actually exist or if we need to adjust the scope of our project.
 4. Document progress and plan for the next step. Write an outline of the data story that we will tell.
+
+# A list of next steps
+The next steps we have planned for our project up to part 3:
+* Explore additional ways to extract data from the text and related products in the dataset, in particular if it's possible to predict the final score of a review using a different type of classifier, for example by analyzing which keywords occur more frequently in reviews that the users consider more helpful or that we can determine to be more biased or correlates with high ratings.
+* Try to determine if any of the users obtained any incentives to write any of the reviews by looking at particularly positive or negative sentiment scores or phrases that suggest that the review is biased (like the user stating the contrary in the description).
+* Run the analysis on the full data using spark on the cluster to see if the results we obtained from the subsample are any different from the ones that we would obtain by analyzing the data in its entirety.
+* Possibly enrich the data by using Amazon's item lookup API to download additional features.
+
 
 # Questions for TAa
 Will there be limits on how often we're allowed to use the compute cluster?
