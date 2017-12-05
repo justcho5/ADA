@@ -1,4 +1,14 @@
 from pyspark import SparkContext
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+
+### INSTRUCTIONS (run on the cluster in your home dir) ###
+### pip install --user vaderSentiment requests
+### pip download vaderSentiment requests
+### There will be a bunch of "moduleName*.whl" files in your home dir,
+###   rename them to "moduleName.zip"
+###   e.g. vaderSentiment-2.5-py2.py3-none-any.whl -> vaderSentiment.zip
+### You can see the list of required modules below, check that all of them
+###   are in your home dir
 
 sc = SparkContext()
 sc.addPyFile('vaderSentiment.zip')
@@ -8,9 +18,7 @@ sc.addPyFile('certifi.zip')
 sc.addPyFile('chardet.zip')
 sc.addPyFile('urllib3.zip')
 
-from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
-
-analyzer = SentimentIntensityAnalyzer(lexicon_file='vader_lexicon.txt')
+analyzer = SentimentIntensityAnalyzer()
 
 rdd = sc.parallelize([
   "VADER is smart, handsome, and funny.",      # positive sentence example
