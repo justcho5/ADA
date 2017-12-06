@@ -59,7 +59,10 @@ tok = sc.broadcast(RegexpTokenizer(r'\w+'))
 
 reviews = sc.textFile(DATA_PATH)\
     .map(json.loads)\
-    .filter(lambda r: r['reviewText'] and r['unixReviewTime'])\
+    .filter(lambda r: 'unixReviewTime' in r and
+                      'reviewText' in r and
+                      r['reviewText'] and
+                      r['unixReviewTime'])\
     .map(add_day_month_year)\
     .map(lambda r: add_sentiment_score(r, vader))\
     .map(lambda r: tokenize_text(r, tok))\
