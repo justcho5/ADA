@@ -1,13 +1,8 @@
 from pyspark import SparkContext
-from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 sc = SparkContext()
-sc.addPyFile('vaderSentiment.zip')
-sc.addPyFile('requests.zip')
-sc.addPyFile('idna.zip')
-sc.addPyFile('certifi.zip')
-sc.addPyFile('chardet.zip')
-sc.addPyFile('urllib3.zip')
+sc.addPyFile('nltk.zip')
 
 analyzer = sc.broadcast(SentimentIntensityAnalyzer())
 
