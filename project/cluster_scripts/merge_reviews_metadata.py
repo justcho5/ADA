@@ -9,10 +9,10 @@ sc = SparkContext()
 sqlContext = SQLContext(sc)
 sqlContext.setConf('spark.sql.parquet.compression.codec','snappy')
 
-df1 = sqlContext.read.parquet(REVIEW_PATH)
-df2 = sqlContext.read.parquet(META_PATH)
+reviews = sqlContext.read.parquet(REVIEW_PATH)
+meta = sqlContext.read.parquet(META_PATH)
 
-joined = df1.join(df2, on='asin')
+joined = reviews.join(meta, on='asin')
 
 joined.write.mode('overwrite').parquet(JOINED_PATH)
 
