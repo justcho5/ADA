@@ -28,7 +28,10 @@ price_bins = [
 def add_price_tier(row, bins):
     # We don't want any reviews for which the price is either NaN or 0
     # or which don't belong to any category
-    if ('price' not in row) or (row['price'] == 0):
+    if 'price' not in row:
+        row['price'] = 0
+
+    if row['price'] == 0:
         tier = 0
     else:
         tier = bisect.bisect_left(bins.value, row['price'])
@@ -59,6 +62,7 @@ def add_main_category(row, categories_dict):
 
     if 'categories' not in row:
         row['main_category'] = ''
+        row['categories'] = []
     else:
         row['main_category'] = get_main_category(row['categories'])
 
