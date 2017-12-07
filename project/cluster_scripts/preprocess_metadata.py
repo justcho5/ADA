@@ -86,7 +86,6 @@ def main():
         .map(ast.literal_eval) \
         .map(lambda r: add_price_tier(r, bins)) \
         .map(lambda r: add_main_category(r, categories_dict))
-    # .filter(lambda x: x)
 
     # convert to dataframe
     metadata_df = sqlContext.createDataFrame(metadata)
