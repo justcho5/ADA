@@ -28,7 +28,7 @@ price_bins = [
 def add_price_tier(row, bins):
     # We don't want any reviews for which the price is either NaN or 0
     # or which don't belong to any category
-    if 'price' not in row:
+    if ('price' not in row) or (not row['price']):
         row['price'] = 0
 
     if row['price'] == 0:
@@ -60,7 +60,7 @@ def add_main_category(row, categories_dict):
         else:
             return ''
 
-    if 'categories' not in row:
+    if ('categories' not in row) or (not row['categories']):
         row['main_category'] = ''
         row['categories'] = []
     else:
