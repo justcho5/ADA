@@ -29,9 +29,9 @@ def add_price_tier(row, bins):
     # We don't want any reviews for which the price is either NaN or 0
     # or which don't belong to any category
     if ('price' not in row) or (not row['price']):
-        row['price'] = 0
+        row['price'] = 0.0
 
-    if row['price'] == 0:
+    if row['price'] == 0.0:
         tier = 0
     else:
         tier = bisect.bisect_left(bins.value, row['price'])
@@ -92,7 +92,7 @@ def main():
         .map(lambda r: add_main_category(r, categories_dict))
 
     # convert to dataframe
-    metadata_df = sqlContext.createDataFrame(metadata)
+    metadata_df = sqlContext.createDataFrame(metadata, samplingRatio=0.01)
 
     print('{} metadata rows'.format(metadata_df.count()))
 
