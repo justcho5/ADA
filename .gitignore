@@ -3,3 +3,7 @@
 .idea/
 *.csv
 project/data/
+
+_site
+.sass-cache
+.jekyll-metadata
