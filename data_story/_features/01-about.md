@@ -1,15 +1,17 @@
 ---
 id: about
-name: About
-heading: This First Heading
-subheading: Will Catch Your Eye
+name: All Amazon Reviews
+heading: Amazon Reviews 1997 - 2014
+subheading: Overview
 image: ""
 ---
 
 
 ### Feature analysis
 
-We can now start to have a look at the distribution of the various features. First of all: overall score distribution.
+We can now start to have a look at the distribution of the various features. 
+
+First of all: overall score distribution.
 
 
 We can see that more than half of the reviews gave five stars to the product independently of the price. The low proportion of 1 and 2 star reviews suggests that customers are very likely to be satisfied with the product they purchased.
