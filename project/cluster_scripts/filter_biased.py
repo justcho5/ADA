@@ -1,41 +1,63 @@
 from pyspark import SparkContext, SQLContext
 from pyspark.sql.functions import UserDefinedFunction
 from pyspark.sql.types import BooleanType
-from nltk.corpus import stopwords
-from nltk.util import bigrams
 
-DATA_PATH = 'hdfs:///user/mrizzo/filtered_df'
-JSON_PATH = 'hdfs:///user/mrizzo/incent_json'
+DATA_PATH = 'hdfs:///user/mrizzo/bigrams_df'
+INCENT_PATH = 'hdfs:///user/mrizzo/incent_df'
 
-def filter_func(tokens, stops):
-    lower = [t.lower() for t in tokens]
-    nostops = [w for w in lower if w not in stops.value and len(w) > 2]
-    bg = set(bigrams(nostops))
+def filter_func(bigrams):
+    bg = set([tuple(b) for b in bigrams])
 
-    return (('unbiased', 'review') in bg) or \
-           (('honest', 'review') in bg) or \
-           ('disclaimer' in nostops) or \
+    return (('complimentary', 'copy') in bg) or \
+           (('discount', 'exchange') in bg) or \
+           (('exchange', 'product') in bg) or \
            (('exchange', 'review') in bg) or \
            (('exchange', 'unbiased') in bg) or \
-           (('exchange', 'honest') in bg)
+           (('exchange', 'free') in bg) or \
+           (('exchange', 'honest') in bg) or \
+           (('exchange', 'true') in bg) or \
+           (('exchange', 'truth') in bg) or \
+           (('fair', 'review') in bg) or \
+           (('free', 'discount') in bg) or \
+           (('free', 'exchange') in bg) or \
+           (('free', 'sample') in bg) or \
+           (('free', 'unbiased') in bg) or \
+           (('honest', 'feedback') in bg) or \
+           (('honest', 'unbiased') in bg) or \
+           (('opinion', 'state') in bg) or \
+           (('opinion', 'own') in bg) or \
+           (('provide', 'exchange') in bg) or \
+           (('provide', 'sample') in bg) or \
+           (('provided', 'sample') in bg) or \
+           (('provided', 'exchange') in bg) or \
+           (('receive', 'free') in bg) or \
+           (('receive', 'free') in bg) or \
+           (('received', 'free') in bg) or \
+           (('received', 'sample') in bg) or \
+           (('return', 'unbiased') in bg) or \
+           (('review', 'sample') in bg) or \
+           (('sample', 'product') in bg) or \
+           (('sample', 'unbiased') in bg) or \
+           (('sample', 'free') in bg) or \
+           (('send', 'sample') in bg) or \
+           (('unbiased', 'review') in bg) or \
+           (('unbiased', 'opinion') in bg) or \
+           (('unbiased', 'view') in bg)
 
 
 def main():
     sc = SparkContext()
-    sc.addPyFile('nltk.zip')
 
     sqlContext = SQLContext(sc)
     sqlContext.setConf('spark.sql.parquet.compression.codec', 'snappy')
 
     df = sqlContext.read.parquet(DATA_PATH)
 
-    stops = sc.broadcast(set(stopwords.words('english')))
+    udf = UserDefinedFunction(filter_func, BooleanType())
 
-    udf = UserDefinedFunction(lambda t: (filter_func(t, stops)), BooleanType())
+    filtered = df.filter(udf(df.bg))
 
-    filtered = df.filter(udf(df.tokenized_text))
-
-    filtered.write.mode('overwrite').json(JSON_PATH)
+    filtered.write.mode('overwrite').parquet(INCENT_PATH)
 
 
 if __name__ == '__main__':
