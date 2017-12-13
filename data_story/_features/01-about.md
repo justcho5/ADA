@@ -28,6 +28,10 @@ We can now start looking at the prices of the items.
 ![picture showcase](/assets/review_number_vs_category.png)
 *This is the caption.*
 
+![sentment score v.s. rating](/assets/sent_rating.png)
+*The range of the sentiment score is [-1, 1] with -1 being the most negative sentiment and 1 being the most positive one.*
+
+
 This is not a caption.
 
 

@@ -1,21 +1,19 @@
 main {
   hr { margin: 80px 0; }
+  
   section { 
- text-align: justify;
-  overflow: hidden; }
-  p img {
-  display: block;
-  margin: auto;
+    text-align: justify;
+    overflow: hidden;
   }
+  
+  p img {
+    display: block;
+    margin: auto;
+  }
+  
   img + em {
-
-    //@extend .img-circle;
-	@extend .img-responsive;
-
-    &.pull-left {  margin-right: 40px;  }
-    &.pull-right {  margin-left: 40px;  }
-
-  text-align: center;
+    @extend .img-responsive;
+    text-align: center;
   }
 
   h2 {
