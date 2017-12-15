@@ -60,14 +60,13 @@ def main():
     incent_bootstap_samples = [df_incent.sample(True, 1.) for _ in xrange(10)]
 
     bins = sc.broadcast(np.linspace(-1, 1, 11))
-    incent_results = [get_plot_data(s, sqlContext, bins) for s in incent_bootstap_samples]
     non_incent_results = [get_plot_data(s, sqlContext, bins) for s in non_incent_bootstap_samples]
-
-    with open('plots/incent_results.json', 'w') as f:
-        json.dump(incent_results, f)
-
     with open('plots/non_incent_results.json', 'w') as f:
         json.dump(non_incent_results, f)
+
+    incent_results = [get_plot_data(s, sqlContext, bins) for s in incent_bootstap_samples]
+    with open('plots/incent_results.json', 'w') as f:
+        json.dump(incent_results, f)
 
 
 if __name__ == '__main__':
