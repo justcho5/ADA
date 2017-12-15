@@ -47,7 +47,7 @@ def main():
 
     rows = sqlContext.sql("SELECT main_category, AVG(word_count) FROM ALL_REVIEW GROUP BY main_category").collect()
     jsons = [row.asDict() for row in rows]
-    with open('plots/rating_category.txt','w') as f:
+    with open('plots/length_category.txt','w') as f:
         json.dump(jsons, f)
 
 if __name__ == '__main__':
