@@ -30,3 +30,7 @@ def main():
     ])
 
     print(rdd.map(analyzer.value.polarity_scores).collect())
+
+
+if __name__ == '__main__':
+    main()

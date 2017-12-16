@@ -6,25 +6,31 @@ from pyspark import SparkContext
 # ID per line. Since the metadata file is a text file with one JSON object per line we can load it as a RDD of lines
 # and filter the lines so that only those whose ID is in the provided list remains.
 
-# context initialization
-sc = SparkContext()
+def main():
+    # context initialization
+    sc = SparkContext()
 
-lookup = None
+    lookup = None
 
-with open('/buffer/asin_lookup.csv') as f:
-  lookup = sc.broadcast([line.rstrip() for line in f])
+    with open('/buffer/asin_lookup.csv') as f:
+        lookup = sc.broadcast([line.rstrip() for line in f])
 
-# read the input file line by line
-metadata = sc.textFile('hdfs:///datasets/productGraph/metadata.json')
+    # read the input file line by line
+    metadata = sc.textFile('hdfs:///datasets/productGraph/metadata.json')
 
-asin_re = re.compile(r"{'asin': '([a-zA-Z0-9]+)'")
+    asin_re = re.compile(r"{'asin': '([a-zA-Z0-9]+)'")
 
-# return True if this line's product ID is in the lookup list
-def filter_func(line):
-    match = asin_re.match(line)
-    return (match.group(1) in lookup.value) if match else False
+    # return True if this line's product ID is in the lookup list
+    def filter_func(line):
+        match = asin_re.match(line)
+        return (match.group(1) in lookup.value) if match else False
 
-lines = metadata.filter(filter_func)
+    lines = metadata.filter(filter_func)
 
-# save to json with gzip compression
-lines.saveAsTextFile('hdfs:///users/mrizzo/meta.gz', compressionCodecClass='org.apache.hadoop.io.compress.GzipCodec')
+    # save to json with gzip compression
+    lines.saveAsTextFile('hdfs:///users/mrizzo/meta.gz',
+                         compressionCodecClass='org.apache.hadoop.io.compress.GzipCodec')
+
+
+if __name__ == '__main__':
+    main()
