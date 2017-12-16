@@ -74,29 +74,38 @@ def add_main_category(row, categories_dict):
 
 
 def main():
+    """
+    Preprocess the file containing product medatata by loading the data,
+    adding new features, creating a DataFrame and saving the results.
+    """
     # context initialization
     sc = SparkContext()
     sqlContext = SQLContext(sc)
     sqlContext.setConf('spark.sql.parquet.compression.codec', 'snappy')
 
+    # Broadcast the list of price bins
     bins = sc.broadcast(price_bins)
 
-    # Load category dictionary from file
+    # Load category dictionary from file. This is used to map each product
+    # category to a main category
     with open(categories_dict_path) as f:
+        # Broadcast the dictionary
         categories_dict = sc.broadcast(json.load(f))
 
-    # read the input file line by line, then load strings as jsons
+    # Read the input file line by line, then evaluate the strings one by one.
+    # This is necessary because the metadata file uses single quotes for strings
+    # and so it is not valid JSON. ast.literal_eval is a safer version of eval
+    # that only accepts data as input. After evaluating the data, add computed
+    # features.
     metadata = sc.textFile(META_PATH) \
         .map(ast.literal_eval) \
         .map(lambda r: add_price_tier(r, bins)) \
         .map(lambda r: add_main_category(r, categories_dict))
 
-    # convert to dataframe
+    # Convert the result to a DataFrame
     metadata_df = sqlContext.createDataFrame(metadata, samplingRatio=0.01)
 
-    print('{} metadata rows'.format(metadata_df.count()))
-
-    # save as parquet
+    # Save to HDFS
     metadata_df.write.mode('overwrite').parquet(OUTPUT_PATH)
 
 

@@ -5,6 +5,7 @@ from pyspark.sql.types import BooleanType
 DATA_PATH = 'hdfs:///user/mrizzo/bigrams_df'
 INCENT_PATH = 'hdfs:///user/mrizzo/incent_df'
 
+
 def filter_func(bigrams):
     bg = set([tuple(b) for b in bigrams])
 
@@ -46,6 +47,9 @@ def filter_func(bigrams):
 
 
 def main():
+    """
+    Filter
+    """
     sc = SparkContext()
 
     sqlContext = SQLContext(sc)
