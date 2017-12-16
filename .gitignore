@@ -3,6 +3,7 @@
 .idea/
 *.csv
 project/data/
+*.DS_Store
 
 _site
 .sass-cache
