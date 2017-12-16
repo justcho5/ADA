@@ -7,8 +7,17 @@ INCENT_PATH = 'hdfs:///user/mrizzo/incent_df'
 
 
 def filter_func(bigrams):
+    """
+    Given a list of bigrams from a review's text, returns true if the review is
+    incentivized by using a lookup list
+    :param bigrams: Bigrams from the review's text, lemmatized for better matching
+    :return: True if the review is incentivized, False otherwise
+    """
+    # Tuples are saved as lists in Spark dataframes, convert them back to tuples
+    # and use set for faster searching
     bg = set([tuple(b) for b in bigrams])
 
+    # Look for specific bigrams in the list
     return (('complimentary', 'copy') in bg) or \
            (('discount', 'exchange') in bg) or \
            (('exchange', 'product') in bg) or \
@@ -48,19 +57,23 @@ def filter_func(bigrams):
 
 def main():
     """
-    Filter
+    Filter incentivized reviews using bigrams.
     """
     sc = SparkContext()
 
     sqlContext = SQLContext(sc)
     sqlContext.setConf('spark.sql.parquet.compression.codec', 'snappy')
 
+    # Load data
     df = sqlContext.read.parquet(DATA_PATH)
 
+    # Filter function
     udf = UserDefinedFunction(filter_func, BooleanType())
 
+    # Filter the dataframe
     filtered = df.filter(udf(df.bg))
 
+    # Save to HDFS
     filtered.write.mode('overwrite').parquet(INCENT_PATH)
 
 
