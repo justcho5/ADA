@@ -210,7 +210,7 @@ section.success {
 
 #portfolio .portfolio-item {
     right: 0;
-    margin: 0 0 15px;
+    margin: 15px 0px 15px 0px;
 }
 
 #portfolio .portfolio-item .portfolio-link {
@@ -261,7 +261,7 @@ section.success {
 
 @media(min-width:767px) {
     #portfolio .portfolio-item {
-        margin: 0 0 30px;
+        margin: 30px 0px 30px 0px;
     }
 }
 

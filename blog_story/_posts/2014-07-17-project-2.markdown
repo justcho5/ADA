@@ -2,7 +2,7 @@
 layout: default
 modal-id: 2
 date: 2014-07-17
-img: graphs/wordcount_by_rating.png
+img: graphs/whole_num_reviews_by_overall.png
 alt: image-alt
 project-date: April 2014
 client: Start Bootstrap

@@ -2,7 +2,7 @@
 layout: default
 modal-id: 1
 date: 2014-07-18
-img: graphs/sentiment_by_rating.png
+img: graphs/whole_num_reviews_by_category.png
 alt: image-alt
 project-date: April 2014
 client: Start Bootstrap
