@@ -43,6 +43,7 @@ def get_plot_data(df, sqlContext, bins):
 
     # Run all queries and store the results in a dict
     ret = {
+        # The output of each query is very small so using collect() is fine
         name: [row.asDict() for row in sqlContext.sql(query).collect()]
         for (name, query) in queries.iteritems()
     }
