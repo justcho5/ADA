@@ -9,7 +9,25 @@
                 </div>
             </div>
             <div class="row">
-                <p class = "subsection-intro">We first started out looking through our dataset to see any trends and observe the overall characteristics.</p>
+                <p class = "subsection-intro">
+                    Amazon’s Review Dataset consists of metadata and 142.8 million product reviews from May 1996 to July 2014. The dataset contains the ratings, review text, helpfulness, and product metadata, including descriptions, category information, price etc. This dataset has a wealth of information that can inform us about consumers and how they rate or review products. 
+
+</p>
+
+<p >
+In particular, the goal of this project was to observe a specific population of consumers—those who receive products for free or at discounted prices in exchange for “honest” reviews.
+
+</p>
+
+<p >
+We asked: Are incentivized Amazon reviews really unbiased?
+
+</p>
+
+<p >
+First, we start out by getting a sense of what the dataset looks like. How many reviews are there per category? How many reviews gave 5 stars? 4 stars? etc. How long are the reviews and how positive are they?We first started out looking through our dataset to see any trends and observe the overall characteristics.
+
+</p>
 
                     <div class="col-sm-6 portfolio-item">
                         <a href="#portfolioModal-1" class="portfolio-link" data-toggle="modal">
@@ -38,7 +56,19 @@
 
                 <div class = "row">
 
-                    <p class = "subsection-intro">We first started out looking through our dataset to see any trends and observe the overall characteristics.</p>
+                    <p class = "subsection-intro">
+                        We observe that the Electronics and Books categories have the most reviews and most products have 5-star ratings. 
+
+</p>
+<p>
+We didn’t just want to use review ratings as a measure of product quality or consumer satisfaction. How positively or negatively people write the reviews can be a good indication of what they think about the product. So we utilized the VADER sentiment analysis tool to measure the sentiment in the review text.
+
+</p>
+
+<p>
+Above a compound sentiment score of 0.5, indicates a more positive sentiment, and below a compound sentiment score of -0.5 indicates a more negative sentiment. In between those scores is considered neutral sentiment.
+
+</p>
                 </div>
 
                 <div class="row">
@@ -69,7 +99,10 @@
 </div>
 <div class = "row">
 
-                    <p class = "subsection-intro">We first started out looking through our dataset to see any trends and observe the overall characteristics.</p>
+                    <p class = "subsection-intro">
+                        We can see that most reviews are written with positive language. This adds to the fact that most reviews are rated 5 stars. And when we look at how sentiment score relates to the overall review star rating, the two scores are correlated. We can observe that the 1-star, 2-star reviews are not written with extremely negative language because the average compound sentiment score is just below zero to 0.15. This is considered the “neutral” range according to the VADER sentimental analysis tool documentation. Because there are not many extremely negative reviews, it is possible that Amazon removed these types of reviews or perhaps consumers innately write more positively than how they really feel. This could be due to the fact that these reviews are public.
+                        
+</p>
                 </div>
 
 <div class="row">

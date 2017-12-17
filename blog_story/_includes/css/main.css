@@ -12,6 +12,7 @@ body {
     display:block;
     margin: 0 auto;
     text-align: center;
+    line-height:normal;
 }
 .graph {
     display: block;
@@ -217,7 +218,7 @@ section.success {
     display: block;
     position: relative;
     margin: 0 auto;
-    max-width: 400px;
+    max-width: 550px;
 }
 
 #portfolio .portfolio-item .portfolio-link .caption {
