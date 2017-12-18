@@ -4,6 +4,7 @@ from pyspark import SparkContext, SQLContext
 
 NON_INCENT_PATH = 'hdfs:///user/mrizzo/non_incent_df'
 INCENT_PATH = 'hdfs:///user/mrizzo/incent_df'
+WHOLE_DATASET_PATH = 'hdfs:///user/mrizzo/filtered_df'
 
 
 def get_plot_data(df, sqlContext, bins):
@@ -23,12 +24,14 @@ def get_plot_data(df, sqlContext, bins):
     sqlContext.registerDataFrameAsTable(df, 'data')
     # Queries to run
     queries = {
-        'avg_compound_by_rating':
+        'avg_compound_by_overall':
             'SELECT overall, AVG(compound_score) FROM data GROUP BY overall',
         'avg_length_by_overall':
             'SELECT overall, AVG(word_count) FROM data GROUP BY overall',
         'avg_length_by_price_tier':
             'SELECT price_tier, AVG(word_count) FROM data GROUP BY price_tier',
+        'avg_overall_by_price_tier':
+            'SELECT price_tier, AVG(overall) FROM data GROUP BY price_tier',
         'avg_compound_by_category':
             'SELECT main_category, AVG(compound_score) FROM data GROUP BY main_category',
         'avg_length_by_category':
@@ -38,26 +41,26 @@ def get_plot_data(df, sqlContext, bins):
         'num_reviews_by_price_tier':
             'SELECT price_tier, COUNT(*) FROM data GROUP BY price_tier',
         'num_reviews_by_category':
-            'SELECT main_category, COUNT(*) FROM data GROUP BY main_category'
+            'SELECT main_category, COUNT(*) FROM data GROUP BY main_category',
+        'avg_overall':
+            'SELECT AVG(overall) FROM data',
+        'avg_compound':
+            'SELECT AVG(compound_score) FROM data',
+        'avg_length':
+            'SELECT AVG(word_count) FROM data'
     }
 
     # Run all queries and store the results in a dict
+    # The output of each query is very small so using collect() is fine
     ret = {
-        # The output of each query is very small so using collect() is fine
         name: [row.asDict() for row in sqlContext.sql(query).collect()]
         for (name, query) in queries.iteritems()
     }
 
-    # Make a histogram of the sentiment scores for each review score
-    hist = [list(bins.value)]
-    for rating in xrange(1, 6):
-        hist.append(df.filter(df.overall == rating) \
-                    .select('compound_score') \
-                    .rdd \
-                    .histogram(list(bins.value))[1])
-
+    # Make a histogram of the sentiment scores
     # Add the histogram to the dict
-    ret['sentiment_distribution_by_rating'] = hist
+    ret['sentiment_distribution_by_rating'] = \
+        df.select('compound_score').rdd.histogram(bins.value)[1]
 
     return ret
 
@@ -68,6 +71,7 @@ def main():
     using 10x bootstrap resampling and store the results in two JSON files
     that will be used to draw plots off the cluster.
     """
+    num_bootstrap_samples = 10
     sc = SparkContext()
 
     sqlContext = SQLContext(sc)
@@ -77,23 +81,36 @@ def main():
     df_non_incent = sqlContext.read.parquet(NON_INCENT_PATH)
     # Incentivized reviews
     df_incent = sqlContext.read.parquet(INCENT_PATH)
+    # Whole dataset
+    df_whole = sqlContext.read.parquet(WHOLE_DATASET_PATH)
 
-    # Draw 10 bootstrap samples from each dataframe
-    non_incent_bootstap_samples = [df_non_incent.sample(True, 1.) for _ in xrange(10)]
-    incent_bootstap_samples = [df_incent.sample(True, 1.) for _ in xrange(10)]
+    # Draw bootstrap samples from each dataframe
+    non_incent_bootstap_samples = [df_non_incent.sample(True, 1.)
+                                   for _ in range(num_bootstrap_samples)]
+    incent_bootstap_samples = [df_incent.sample(True, 1.)
+                               for _ in range(num_bootstrap_samples)]
+    whole_dataset_bootstrap_samples = [df_whole.sample(True, 1.)
+                                       for _ in range(num_bootstrap_samples)]
 
     # Bins for the sentiment score histogram
-    bins = sc.broadcast(np.linspace(-1, 1, 11))
+    bins = sc.broadcast(list(np.linspace(-1, 1, 11)))
 
     # Non-incentivized reviews (do this first because this dataframe is much
-    # larger than the other so if Spark does not run out of memory here we
-    # should be fine)
+    # larger than just non incentivized so if Spark does not run out of memory
+    # here we should be fine)
     non_incent_results = [get_plot_data(s, sqlContext, bins)
                           for s in non_incent_bootstap_samples]
     # Save the results
     with open('plots/non_incent_results.json', 'w') as f:
         json.dump(non_incent_results, f)
 
+    # Whole dataset, similar size as only non incentivized
+    whole_dataset_results = [get_plot_data(s, sqlContext, bins)
+                             for s in whole_dataset_bootstrap_samples]
+    with open('plots/whole_dataset_results.json', 'w') as f:
+        json.dump(whole_dataset_results, f)
+
+    # Incentivized only
     incent_results = [get_plot_data(s, sqlContext, bins)
                       for s in incent_bootstap_samples]
     with open('plots/incent_results.json', 'w') as f:
