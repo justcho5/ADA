@@ -84,6 +84,9 @@ def main():
     # Whole dataset
     df_whole = sqlContext.read.parquet(WHOLE_DATASET_PATH)
 
+    df_incent_electronics = df_incent.filter("main_category = 'Electronics'")
+    df_non_incent_electronics = df_non_incent.filter("main_category = 'Electronics'")
+
     # Draw bootstrap samples from each dataframe
     non_incent_bootstap_samples = [df_non_incent.sample(True, 1.)
                                    for _ in range(num_bootstrap_samples)]
@@ -91,6 +94,10 @@ def main():
                                for _ in range(num_bootstrap_samples)]
     whole_dataset_bootstrap_samples = [df_whole.sample(True, 1.)
                                        for _ in range(num_bootstrap_samples)]
+    elec_non_incent_bootstrap_samples = [df_non_incent_electronics.sample(True, 1.)
+                                         for _ in range(num_bootstrap_samples)]
+    elec_incent_bootstrap_samples = [df_incent_electronics.sample(True, 1.)
+                                     for _ in range(num_bootstrap_samples)]
 
     # Bins for the sentiment score histogram
     bins = sc.broadcast(list(np.linspace(-1, 1, 11)))
@@ -115,6 +122,17 @@ def main():
                       for s in incent_bootstap_samples]
     with open('plots/incent_results.json', 'w') as f:
         json.dump(incent_results, f)
+
+    # Electronics only
+    elec_incent_results = [get_plot_data(s, sqlContext, bins)
+                      for s in elec_incent_bootstrap_samples]
+    with open('plots/elec_incent_results.json', 'w') as f:
+        json.dump(elec_incent_results, f)
+
+    elec_non_incent_results = [get_plot_data(s, sqlContext, bins)
+                           for s in elec_non_incent_bootstrap_samples]
+    with open('plots/elec_non_incent_results.json', 'w') as f:
+        json.dump(elec_non_incent_results, f)
 
 
 if __name__ == '__main__':
