@@ -4,25 +4,17 @@ from pyspark import SparkContext, SQLContext
 
 NON_INCENT_PATH = 'hdfs:///user/mrizzo/non_incent_df'
 INCENT_PATH = 'hdfs:///user/mrizzo/incent_df'
-WHOLE_DATASET_PATH = 'hdfs:///user/mrizzo/filtered_df'
+ALL_PATH = 'hdfs:///user/mrizzo/joined_df'
+ELECTRONICS_PATH = 'hdfs:///user/cyu/electronics_df'
+ELECTRONICS_INCENT_PATH = 'hdfs:///user/cyu/electronics_incent_df'
+ELECTRONICS_NON_INCENT_PATH = 'hdfs:///user/cyu/electronics_non_incent_df'
 
 
 def get_plot_data(df, sqlContext, bins):
-    """
-    Compute statistics on a Spark dataframe containing product reviews
-    :param df: The Spark dataframe containing the data to analyze
-    :param sqlContext: The Spark SQL context
-    :param bins: Bins for the sentiment score histogram, as a Spark broadcast variable
-    :return: A dict containing the results of the computations
-    """
-    # Register the dataframe as a SQL table and unregister any previous tables
-    # with the same name
     if 'data' in sqlContext.tableNames():
         sqlContext.dropTempTable('data')
 
-    # Register our dataframe as a SQL table
     sqlContext.registerDataFrameAsTable(df, 'data')
-    # Queries to run
     queries = {
         'avg_compound_by_overall':
             'SELECT overall, AVG(compound_score) FROM data GROUP BY overall',
@@ -77,12 +69,19 @@ def main():
     sqlContext = SQLContext(sc)
     sqlContext.setConf('spark.sql.parquet.compression.codec', 'snappy')
 
+<<<<<<< Updated upstream
     # Non incentivized reviews
     df_non_incent = sqlContext.read.parquet(NON_INCENT_PATH)
     # Incentivized reviews
     df_incent = sqlContext.read.parquet(INCENT_PATH)
     # Whole dataset
     df_whole = sqlContext.read.parquet(WHOLE_DATASET_PATH)
+    # All reviews in the electronics category
+    df_elec = sqlContext.read.parquet(ELECTRONICS_PATH)
+    # Non incentivized reviews in the electronics category
+    df_elec_non_incent = sqlContext.read.parquet(ELECTRONICS_NON_INCENT_PATH)
+    # Incentivized reviews in the electronics category
+    df_elec_incent = sqlContext.read.parquet(ELECTRONICS_INCENT_PATH)
 
     # Draw bootstrap samples from each dataframe
     non_incent_bootstap_samples = [df_non_incent.sample(True, 1.)
@@ -91,6 +90,13 @@ def main():
                                for _ in range(num_bootstrap_samples)]
     whole_dataset_bootstrap_samples = [df_whole.sample(True, 1.)
                                        for _ in range(num_bootstrap_samples)]
+    elec_bootstap_samples = [df_elec.sample(True, 1.)
+                             for _ in xrange(10)]
+    elec_non_incent_bootstap_samples = [df_elec_non_incent.sample(True, 1.)
+                                        for _ in xrange(10)]
+    elec_incent_bootstap_samples = [df_elec_incent.sample(True, 1.)
+                                    for _ in xrange(10)]
+
 
     # Bins for the sentiment score histogram
     bins = sc.broadcast(list(np.linspace(-1, 1, 11)))
@@ -115,6 +121,24 @@ def main():
                       for s in incent_bootstap_samples]
     with open('plots/incent_results.json', 'w') as f:
         json.dump(incent_results, f)
+
+    # Reviews in the electronics category
+    elec_results = [get_plot_data(s, sqlContext, bins)
+                    for s in elec_bootstap_samples]
+    with open('plots/elec_results.json', 'w') as f:
+        json.dump(elec_results, f)
+
+    # Non incentivized reviews in the electronics category
+    elec_non_incent_results = [get_plot_data(s, sqlContext, bins)
+                               for s in elec_non_incent_bootstap_samples]
+    with open('plots/elec_non_incent_results.json', 'w') as f:
+        json.dump(elec_non_incent_results, f)
+
+    # Incentivized reviews in the electronics category
+    elec_incent_results = [get_plot_data(s, sqlContext, bins)
+                           for s in elec_incent_bootstap_samples]
+    with open('plots/elec_incent_results.json', 'w') as f:
+        json.dump(elec_incent_results, f)
 
 
 if __name__ == '__main__':
