@@ -59,7 +59,7 @@ def get_plot_data(df, sqlContext, bins):
 
     # Make a histogram of the sentiment scores
     # Add the histogram to the dict
-    ret['sentiment_distribution_by_rating'] = \
+    ret['compound_histogram'] = \
         df.select('compound_score').rdd.histogram(bins.value)[1]
 
     return ret
