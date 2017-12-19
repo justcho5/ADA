@@ -7,6 +7,7 @@ OUT_PATH = 'hdfs:///user/cyu/electronics_df'
 OUT_INCENT_PATH = 'hdfs:///user/cyu/electronics_incent_df'
 OUT_NON_INCENT_PATH = 'hdfs:///user/cyu/electronics_non_incent_df'
 
+
 def main():
     sc = SparkContext()
     sqlContext = SQLContext(sc)
@@ -19,12 +20,12 @@ def main():
 
     # Filter the reviews with 'Electronics' as its main_category
     df_elec = df_all \
-              .filter(df_all.main_category == 'Electronics')
+        .filter(df_all.main_category == 'Electronics')
     df_elec_incent = df_incent \
-                     .filter(df_incent.main_category == 'Electronics')
+        .filter(df_incent.main_category == 'Electronics')
     df_elec_non_incent = df_non_incent \
-                         .filter(df_non_incent.main_category == 'Electronics')
-    
+        .filter(df_non_incent.main_category == 'Electronics')
+
     # Save filtered data as parquet files
     df_elec.write.mode('overwrite').parquet(OUT_PATH)
     df_elec_incent.write.mode('overwrite').parquet(OUT_INCENT_PATH)
