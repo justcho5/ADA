@@ -1,5 +1,3 @@
-import json
-import numpy as np
 from pyspark import SparkContext, SQLContext
 
 INCENT_PATH = 'hdfs:///user/mrizzo/incent_df'
