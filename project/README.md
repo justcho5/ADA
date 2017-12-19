@@ -81,6 +81,6 @@ Are we going in the right direction with this proposal? Do you think there are a
 # Contributions of all members
 * Matteo: Data processing on the cluster, incentivized review detection algorithm,
 code documentation, initial data analysis, final presentation;
-* Hyun Jii: Data story, initial analysis, incentivized review idea, final presentation;
+* Hyun Jii: Final Website (blog_story folder), initial analysis, incentivized review idea, final presentation;
 * Chia-An: Data story, data processing on the cluster, initial analysis, cluster
 result processing and plotting, final presentation;

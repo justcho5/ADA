@@ -7,16 +7,22 @@
 body {
     overflow-x: hidden;
 }
+.container {
+    max-width: 1100px;
+}
+.three {
+    width: 100%;
+}
 
 .subsection-intro {
     display:block;
     margin: 0 auto;
-    text-align: center;
+    text-align: justify;
     line-height:normal;
 }
 .graph {
     display: block;
-    margin: auto;
+    margin: 30px 0px 30px 0px;
     text-align: center;
 }
 

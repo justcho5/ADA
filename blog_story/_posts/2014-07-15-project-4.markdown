@@ -2,7 +2,7 @@
 layout: default
 modal-id: 4
 date: 2014-07-15
-img: graphs/whole_avg_length_by_price_tier.png
+img: graphs/whole_avg_compound_by_overall.png
 alt: image-alt
 project-date: April 2014
 client: Start Bootstrap

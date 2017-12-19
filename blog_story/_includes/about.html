@@ -4,16 +4,125 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2>Incentivized Reviews</h2>
+                    <h3>"I received this product for free in exchange for my honest, unbiased, review."</h3>
                     <hr class="star-primary">
+                    <!--<hr class="star-light">-->
                 </div>
             </div>
             <div class="row">
                 <div class = "subsection-intro">
-                    <p> Here we delve a bit deeper into the dataset to see whether incentivized reviews have higher ratings and more positive sentiment. </p>
+                    <p> Here we delve a bit deeper into the dataset to see whether incentivized reviews were different from non-incentivized reviews. We first separated the reviews into an incentivized reviews set and an incentivized set.  </p>
                 </div>
                 <div class = "graph">
-                    <img src = "img/portfolio/graphs/review_number_vs_category.png">
+                    <img src = "img/portfolio/graphs/comp_incent.png">
                 </div>
+                <p> As we explored the data, we looked at the average overall review score, positive sentiment, and review length between the two groups. At first glance, the incentivized reviews have higher overall rating score, more positive sentiment, and longer reviews. The overall review score isn't much higher in the incentivized compared to the non-incentivized; however, the difference may not be as evident because as we saw in the whole dataset above, products are generally given high ratings (4-, 5-stars). If the distribution of given overall ratings were more equally distributed, there may have been more of an obvious difference.
+
+                </p>
+                <p>What's even more interesting to note is the sentiment in the review text and the review length. It seems that incentivized reviews are written more positively and are generally much longer than non-incentivized reviews. Didn't people writing the incentivized reviews say that their reviews are "honest and unbiased"? Perhaps even if the reviewer didn't know they were being biased, they were unknowingly writing more positive and longer reviews because they received the product for free. Or on the other hand, because they received the products for free, they were being as positive as possible and thorough with their review so that they could receive more products for free in the future. We don't know the motives of each and every incentivized review reviewer; however, from exploring the data a little deeper, we can now say:
+
+                </p>
+                <p>No, incentivized reviews are NOT unbiased. 
+
+                </p>
+
+               
+                    <div class = "graph">
+               
+                    <img src = "img/portfolio/graphs/count_by_overall.png">
+                
+            </div>
+            <p>
+So, how exactly are the overall review scores distributed? We can see from the plot above that incentivized reviews have less 5-star reviews than nonincentivized reviews. However, incentivized reviewers give less 1-, 2-star reviews than nonincentivized reviewers, and many more 4-star reviews. 
+
+</p>
+<p>But how positively (or negatively) do incentivized reviewers write their reviews based on the overall review score? Let’s take a look. 
+
+</p>
+<!--
+                 <div class = "graph">
+                    <img src = "img/portfolio/graphs/avg_length_by_category.png">
+                </div>
+--> <div class = "row">
+            <div class = "graph col-sm-6">
+                 
+                    <img class = "three" src = "img/portfolio/graphs/sentiment_by_rating.png">
+                
+            </div>
+            <div class = "graph col-sm-6">
+                
+                    <img class = "three" src = "img/portfolio/graphs/wordcount_by_rating.png">
+               
+            </div>
+        </div>
+<p> Here, we can see something very consistent among all review scores given by incentivized reviewers: Reviewers don’t write negatively even about 1-star products. Based on the sentiment scores, it appears that incentivized reviewers, although they may give low-star ratings, they use neutral to more positive language in their reviews when compared to reviews from nonincentivized reviewers. Since incentivized reviewers received the product for free (or at a discounted price), they are not negative in the actual review text. In addition, we see that the review length, in general over all review scores, is always longer than non-incentivized reviews. Let's look more in detail and zoom into one category. The category of choice is Electronics: 
+
+</p>
+
+                <div class = "row">
+            <div class = "graph col-sm-6">
+                 
+                    <img class = "three" src = "img/portfolio/graphs/elec_comp_incent.png">
+                
+            </div>
+            <div class = "graph col-sm-6">
+                
+                    <img class = "three" src = "img/portfolio/graphs/elec_num_reviews_by_overall.png">
+               
+            </div>
+        </div>
+        <p>
+            In the electronics category, the difference in average overall rating score is more obvious between the incentivized group and the non-incentivized group, 4.24 vs 4.02, respectively. The statistically significant difference indicates that when reviewers receive an electronics product for free, they tend to rate the product higher than those who purchase the product at full price. In addition, the distribution of stars given for products is different between the two groups. Reviewers who receive the electronics products for free give more 4- and 5-star ratings and less 1-, 2-, 3-star ratings than reviewers who purchase the product at full-price.
+        
+        </p>
+
+
+
+
+            <div class = "row">
+            <div class = "graph col-sm-6">
+                 
+                    <img class = "three" src = "img/portfolio/graphs/elec_avg_compound_by_rating.png">
+                
+            </div>
+            <div class = "graph col-sm-6">
+                
+                    <img class = "three" src = "img/portfolio/graphs/elec_avg_length_by_overall.png">
+               
+            </div>
+        </div>
+        <p>
+            With mean sentiment score and mean review length for each overall review score in the electronics category, we see the same trend. There is more positive sentiment for all review scores, even the reviews with 1-star ratings, and all incentivized reviews are longer than the non-incentivized ones.
+        </p>
+
+                
+
+            <div class = "row">
+            <div class = "graph col-sm-6">
+                 
+                    <img class = "three" src = "img/portfolio/graphs/elec_avg_length_by_price_tier.png">
+                
+            </div>
+            <div class = "graph col-sm-6">
+                
+                    <img class = "three" src = "img/portfolio/graphs/elec_avg_rating_by_price_tier.png">
+               
+            </div>
+        </div>
+
+               <p>
+            With mean sentiment score and mean review length for each overall review score in the electronics category, we see the same trend. There is more positive sentiment for all review scores, even the reviews with 1-star ratings, and all incentivized reviews are longer than the non-incentivized ones.
+
+        </p>
+
+            <p>
+            In conclusion, we saw many interesting features of incentivized reviews. In general, incentivized reviews were more positively written, longer in length, and rated higher. This was particularly evident in the electronics category, where average overall score given by incentivized reviewers was 4.24 and 4.02 by non-incentivized reviewers. In the future, more work can be done to see what words or adjectives are more frequently used in incentivized reviews and whether the trend of higher ratings for incentivized reviews can be observed in one individual reviewer.
+
+        </p>
+                
+
+                
+                
                 <!--
                 <div class="col-lg-4 col-lg-offset-2">
                     <p>Here we delve a bit deeper into the dataset to see whether incentivized reviews have higher ratings and more positive sentiment.</p>
